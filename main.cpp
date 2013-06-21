@@ -9,15 +9,15 @@
 #include "processamento.h"
 
 int main(){
-  CvSize padrao = cvSize(640, 480);	
+	CvSize padrao = cvSize(640, 480);	
 
 	CvCapture* camera;					
-	camera = cvCaptureFromCAM(1);       	  							//ID DA CAMERA USADA, 0 = Padrão, 1 = Secundária;
+	camera = cvCaptureFromCAM(1);								//ID DA CAMERA USADA, 0 = Padrão, 1 = Secundária;
 
 	IplImage* inicial = cvQueryFrame(camera);	
 	IplImage* img[4];
 	
-	int n = 2;                					  								//NUMERO DE CORES ALOCADAS;
+	int n = 2;													//NUMERO DE CORES ALOCADAS;
 	
 	for(int i = 0 ; i < n ; i++){
 		img[i] = cvQueryFrame(camera);
@@ -31,7 +31,7 @@ int main(){
 
 	struct cor structc[4];
 
-	structc[0] = azul();						              				// DEFINICAO DAS CORES USADAS;
+	structc[0] = azul();										// DEFINICAO DAS CORES USADAS;
 	structc[1] = vermelho();
 
 	cvNamedWindow("Vision", CV_WINDOW_AUTOSIZE);
@@ -52,9 +52,9 @@ int main(){
 			}
 		}
 		render--;
-    
-    //_sleep(200);
-		cvShowImage("Vision", inicial);						          	//IMAGEM MOSTRADA NA TELA, Inicial = Não tratada, img[i] = VETOR DAS CORES;
+		
+		//_sleep(200);
+		cvShowImage("Vision", inicial);							//IMAGEM MOSTRADA NA TELA, Inicial = Não tratada, img[i] = VETOR DAS CORES;
 		//cvShowImage("Vision[i]", img[i]);
 		if(cvWaitKey(33) == 27){
 			break;	
